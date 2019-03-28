@@ -1,4 +1,4 @@
-import math
+drimport math
 from display import *
 
 

@@ -1,4 +1,4 @@
-drimport math
+import math
 from display import *
 
 
@@ -16,7 +16,15 @@ def normalize(vector):
 def dot_product(a, b):
     return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
 
+def cross_product(a,b):
+    return [a[1]*b[2] - a[2]*b[1], a[2]*b[0] - a[0]*b[2], a[0]*b[1] - a[1]*b[0]]
+
 #Calculate the surface normal for the triangle whose first
 #point is located at index i in polygons
+#Nz = UxVy - UyVx
 def calculate_normal(polygons, i):
-    return None
+    vector1 = [ polygons[i+1][0] - polygons[i][0],  polygons[i+1][1] - polygons[i][1],  polygons[i+1][2] - polygons[i][2] ] 
+    vector2 = [ polygons[i+2][0] - polygons[i][0],  polygons[i+2][1] - polygons[i][1],  polygons[i+2][2] - polygons[i][2] ] 
+    Normal = cross_product(vector1,vector2)
+    return Normal
+
